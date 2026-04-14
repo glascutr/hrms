@@ -52,6 +52,22 @@ const routes = [
 		path: "/employee-checkins",
 		component: () => import("@/views/attendance/EmployeeCheckinList.vue"),
 	},
+	{
+		name: "AttendanceAdjustmentRequestListView",
+		path: "/attendance-adjustment-requests",
+		component: () => import("@/views/attendance/AttendanceAdjustmentRequestList.vue"),
+	},
+	{
+		name: "AttendanceAdjustmentRequestFormView",
+		path: "/attendance-adjustment-requests/new",
+		component: () => import("@/views/attendance/AttendanceAdjustmentRequestForm.vue"),
+	},
+	{
+		name: "AttendanceAdjustmentRequestDetailView",
+		path: "/attendance-adjustment-requests/:id",
+		props: true,
+		component: () => import("@/views/attendance/AttendanceAdjustmentRequestForm.vue"),
+	},
 ]
 
 export default routes

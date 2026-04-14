@@ -106,3 +106,39 @@ export const teamAttendanceRequests = createResource({
 		return transformAttendanceRequests(data)
 	},
 })
+
+export const myAdjustmentRequests = createResource({
+	url: "frappe.client.get_list",
+	params: {
+		doctype: "Attendance Adjustment Request",
+		filters: { employee: employeeResource.data.name },
+		fields: ["name", "adjustment_type", "date", "status", "creation"],
+		order_by: "creation desc",
+		limit: 10,
+	},
+	auto: true,
+	transform(data) {
+		return data.map((request) => {
+			request.doctype = "Attendance Adjustment Request"
+			return request
+		})
+	},
+})
+
+export const teamAdjustmentRequests = createResource({
+	url: "frappe.client.get_list",
+	params: {
+		doctype: "Attendance Adjustment Request",
+		filters: { approver: employeeResource.data.user_id, status: "Open" },
+		fields: ["name", "adjustment_type", "date", "status", "creation", "employee_name"],
+		order_by: "creation desc",
+		limit: 10,
+	},
+	auto: true,
+	transform(data) {
+		return data.map((request) => {
+			request.doctype = "Attendance Adjustment Request"
+			return request
+		})
+	},
+})

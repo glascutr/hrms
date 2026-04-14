@@ -5,6 +5,14 @@
 				<div class="flex flex-col bg-white shadow-sm p-4">
 					<div class="flex flex-row justify-between items-center">
 						<div class="flex flex-row items-center gap-2">
+							<Button 
+								v-if="props.showBackButton" 
+								variant="ghost" 
+								class="!px-1 hover:bg-white" 
+								@click="router.back()"
+							>
+								<FeatherIcon name="chevron-left" class="h-5 w-5" />
+							</Button>
 							<h2 class="text-xl font-bold text-gray-900">
 								{{ props.pageTitle || __("Frappe HR") }}
 							</h2>
@@ -41,28 +49,35 @@
 		</ion-header>
 
 		<ion-content class="ion-no-padding">
-			<div class="flex flex-col h-screen w-screen sm:w-96">
+			<div class="flex flex-col min-h-full w-screen sm:w-96">
 				<slot name="body"></slot>
 			</div>
+			<slot name="fixed"></slot>
 		</ion-content>
 	</ion-page>
 </template>
 
 <script setup>
 import { IonHeader, IonContent, IonPage } from "@ionic/vue"
-import { FeatherIcon, Avatar } from "frappe-ui"
+import { FeatherIcon, Avatar, Button } from "frappe-ui"
 
 import { unreadNotificationsCount } from "@/data/notifications"
 
 import { inject } from "vue"
+import { useRouter } from "vue-router"
 
 const user = inject("$user")
+const router = useRouter()
 
 const props = defineProps({
 	pageTitle: {
 		type: String,
 		required: false,
 		default: "",
+	},
+	showBackButton: {
+		type: Boolean,
+		default: false,
 	},
 })
 </script>

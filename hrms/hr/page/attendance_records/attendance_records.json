@@ -1,0 +1,23 @@
+{
+ "content": null,
+ "creation": "2026-04-12 15:05:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-04-12 15:05:00.000000",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "attendance-records",
+ "owner": "Administrator",
+ "page_name": "attendance-records",
+ "roles": [
+  {
+   "role": "HR User"
+  },
+  {
+   "role": "HR Manager"
+  }
+ ],
+ "standard": "Yes",
+ "title": "Attendance Records"
+}

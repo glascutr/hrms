@@ -146,6 +146,7 @@ import { FeatherIcon, createResource, LoadingIndicator, debounce } from "frappe-
 import TabButtons from "@/components/TabButtons.vue"
 import EmployeeCheckinItem from "@/components/EmployeeCheckinItem.vue"
 import AttendanceRequestItem from "@/components/AttendanceRequestItem.vue"
+import AttendanceAdjustmentRequestItem from "@/components/AttendanceAdjustmentRequestItem.vue"
 import ShiftRequestItem from "@/components/ShiftRequestItem.vue"
 import ShiftAssignmentItem from "@/components/ShiftAssignmentItem.vue"
 import LeaveRequestItem from "@/components/LeaveRequestItem.vue"
@@ -192,6 +193,7 @@ const getButtonKey = (tab) => tab?.key ?? tab
 const listItemComponent = {
 	"Employee Checkin": markRaw(EmployeeCheckinItem),
 	"Attendance Request": markRaw(AttendanceRequestItem),
+	"Attendance Adjustment Request": markRaw(AttendanceAdjustmentRequestItem),
 	"Shift Request": markRaw(ShiftRequestItem),
 	"Shift Assignment": markRaw(ShiftAssignmentItem),
 	"Leave Application": markRaw(LeaveRequestItem),
@@ -284,7 +286,7 @@ const documents = createResource({
 
 const createPermission = createResource({
 	url: "frappe.client.has_permission",
-	params: { doctype: props.doctype, docname: null, perm_type: "create" },
+	params: { doctype: props.doctype, docname: "", perm_type: "create" },
 	auto: true,
 })
 
